@@ -487,11 +487,10 @@ func TestGetClient(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := NewServer(Config{})
 			req := httptest.NewRequest(http.MethodGet, "/", bytes.NewBufferString(tt.body))
 			req = req.WithContext(tt.ctx)
 
-			client, _, err := s.getClient[*sdk.SecretGetRequest](req)
+			client, _, err := getClient[*sdk.SecretGetRequest](req)
 
 			if tt.expectError {
 				require.Error(t, err)
