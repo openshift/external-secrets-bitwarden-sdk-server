@@ -1,4 +1,4 @@
-FROM golang:1.27 AS build
+FROM golang:1.26 AS build
 WORKDIR /workspace
 COPY . .
 RUN apt update && apt install unzip musl-tools ca-certificates -y
